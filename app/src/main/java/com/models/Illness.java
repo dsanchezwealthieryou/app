@@ -1,5 +1,8 @@
-package System;
+package com.models;
 
+
+import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * @author User
@@ -9,7 +12,7 @@ package System;
 public class Illness {
 
 	private UUID illnessId;
-	private ArrayList<Symtomp> symtomps;
+	private ArrayList<Symptom> symtomps;
 	private ArrayList<Treatment> treatment;
 
 	public Illness(){
