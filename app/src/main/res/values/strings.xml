@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Wealthier You</string>
+    <string name="app_name" translatable="false">Wealthier You</string>
+    <string name="login">Login to WealthierYou</string>
+    <string name="sign_up">"If you haven't registered yet, "</string>
+    <string name="sign_up_link">Sign Up here.</string>
+    <string name="input_your_password">Input your password</string>
+    <string name="input_your_username">Input your username</string>
 </resources>

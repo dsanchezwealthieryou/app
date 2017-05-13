@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wealthier You</string>
+    <string name="login">Ingresar a WealthierYou</string>
+    <string name="sign_up">"Si no se ha registrado, "</string>
+    <string name="sign_up_link">Regístrese aquí.</string>
+    <string name="input_your_password">Input your password</string>
+    <string name="input_your_username">Input your Username</string>
+</resources>
