@@ -1,6 +1,7 @@
 package com.models;
 
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -13,14 +14,26 @@ public class Doctor extends User{
 	private final UUID doctorId;
 	private final UUID officeId;
 	private final UUID userId;
+	private String specialty;
 
-	public Doctor(UUID doctorId, UUID userId, UUID officeId){
-	    this.doctorId = doctorId;
-        this.userId = userId;
-        this.officeId = officeId;
+	public Doctor(String username, String password, Date dateAdded, Date dateOfBirth,
+				  String firstName, String lastName, Gender gender, UUID userId,
+				  UUID doctorId, UUID officeId) {
+		super(username, password, dateAdded, dateOfBirth, firstName, lastName, gender, userId);
+		this.doctorId = doctorId;
+		this.userId = userId;
+		this.officeId = officeId;
 	}
 
-    public void finalize() throws Throwable {
+	public void finalize() throws Throwable {
 
 	}
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
 }//end Doctor
