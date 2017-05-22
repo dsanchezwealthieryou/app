@@ -1,13 +1,57 @@
 package com.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+//BaseActivity is a class that standarizes actions for all the activities
+public class MainActivity extends BaseActivity {
+    //Bind is used from Butterknife to easily import he xml resources
+    @BindView(R.id.topbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public void initComponents() {
+
+    }
+
+    @Override
+    public void setListeners() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    /**
+     * @param fragment
+     * @param needToAddBackStack
+     * @param clearStack
+     */
+    public void replaceFragment(final Fragment fragment, final boolean needToAddBackStack, boolean clearStack) {
+        final FragmentManager fm = getSupportFragmentManager();
+        final FragmentTransaction ft = fm.beginTransaction();
+        if (needToAddBackStack && !clearStack) {
+            //ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+            ft.replace(R.id.frame_layout_container, fragment).addToBackStack(fragment.getClass().getSimpleName()).commit();
+        } else {
+            ft.replace(R.id.frame_layout_container, fragment).commitAllowingStateLoss();
+        }
     }
 }
