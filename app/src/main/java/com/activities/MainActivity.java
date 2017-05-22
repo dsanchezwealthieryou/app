@@ -1,11 +1,14 @@
 package com.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.fragments.LoginFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,8 +16,11 @@ import butterknife.ButterKnife;
 //BaseActivity is a class that standarizes actions for all the activities
 public class MainActivity extends BaseActivity {
     //Bind is used from Butterknife to easily import he xml resources
-    @BindView(R.id.topbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,9 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+
+        //Show LoginFragment
+        replaceFragment(LoginFragment.getInstance(),false,true);
     }
 
     @Override
@@ -53,5 +62,13 @@ public class MainActivity extends BaseActivity {
         } else {
             ft.replace(R.id.frame_layout_container, fragment).commitAllowingStateLoss();
         }
+    }
+
+    public void setFabVisibility(int visibility){
+        fab.setVisibility(visibility);
+    }
+
+    public void setToolbarVisibility(int visibility){
+        fab.setVisibility(visibility);
     }
 }
