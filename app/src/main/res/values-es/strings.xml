@@ -6,4 +6,5 @@
     <string name="sign_up_link">Regístrese aquí.</string>
     <string name="input_your_password">Ingrese su clave secreta</string>
     <string name="input_your_username">Ingrese su username</string>
+    <string name="sign_up_only">Registrarse</string>
 </resources>
