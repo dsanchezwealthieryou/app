@@ -11,7 +11,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.activities.R;
+import com.database.DBSqlHelper;
+import com.database.UserContract;
 import com.models.User;
+
+import java.util.Date;
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,7 +76,15 @@ public class SignUpFragment extends BaseFragment{
      */
     public void signUp(){
         //FIXME add real data from user input
-        User user = new User(null,null,null,null,null,null,null);
+        Date dateAdded = new Date();
+        User user = new User("dsanchez",
+                "12345",
+                dateAdded,
+                dateAdded,
+                "David",
+                "Sanchez",
+                null,
+                null);
         addUser(user);
     }
 
@@ -88,14 +101,15 @@ public class SignUpFragment extends BaseFragment{
         return true;
     }
 
-
+    //FIXME This has to be in some other class
     public void addUser(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        DBSqlHelper mDbHelper = new DBSqlHelper(getContext());
+        SQLiteDatabase db = mDbHelper.getWritableDatabase(); //FIXME this has to be executed as a AsyncTask
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, shop.getName()); // Shop Name
-        values.put(KEY_SH_ADDR, shop.getAddress()); // Shop Phone Number
+        values.put(UserContract.UserEntry.COLUMN_NAME_FIRST_NAME, user.getFirstName());
+        values.put(UserContract.UserEntry.COLUMN_NAME_LAST_NAME, user.getLastName());
         // Inserting Row
-        db.insert(TABLE_SHOPS, null, values);
+        db.insert(UserContract.UserEntry.TABLE_NAME, null, values);
         db.close(); // Closing database connection
     }
 }
